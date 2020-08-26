@@ -1,0 +1,16 @@
+#kubectl get all
+#kubectl run my-nginx --image=nginx
+
+#kubectl get pods
+
+#kubectl port-forward my-nginx 8080:80
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx
+spec: 
+  containers:
+  - name: nginx
+    image: nginx:alpine

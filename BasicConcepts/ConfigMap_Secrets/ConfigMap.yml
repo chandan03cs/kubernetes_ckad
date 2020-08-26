@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-settings
+  labels:
+    app: app-settings
+data:
+  enemies: aliens
+  lives: "3"
+  enemies.cheat: "true"
+  enemies.cheat.level: noGoodRotten
+
+# kubectl get cm
+# kubectl get configmap
+# kubectl create -f ConfigMap.yml
+# kubectl create configmap mapname --from-literal=lives=3 --from-literal=enemies=aliens

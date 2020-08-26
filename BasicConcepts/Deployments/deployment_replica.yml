@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: my-nginx
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tire: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+    livenessProbe:
+      httpGet:
+        path: /index.html
+        port: 80
+      initialDelaySeconds: 15
+      timeoutSeconds: 2
+      periodSeconds: 5
+      failureThreshold: 1
+
+#kubectl apply -f nginx.deployment.yml
+#kubectl create -f nginx.deployment.yml --save-config
+#kubectl get deployments
+#kubectl get deployment --show-labels
+#kubectl get deployment -l tier=frontend
+#kubectl delete deployment frontend
+#kubectl delete deployment -f nginx.deployment.yml
+#kubectl scale deployment frontend --replicas=5
+#kubectl scale deployment -f nginx.deployment.yml --replicas=5
+#kubectl describe deployment frontend
